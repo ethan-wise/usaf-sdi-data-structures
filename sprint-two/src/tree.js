@@ -16,11 +16,16 @@ treeMethods.addChild = function(value) {
 };
 
 treeMethods.contains = function(target) {
+  if (this.value === target) {
+    return true;
+  }
+
   for (const child of this.children) {
-    if (child.value === target) {
+    if (child.contains(target)) {
       return true;
     }
   }
+
   return false;
 };
 
