@@ -2,8 +2,9 @@ var Tree = function(value) {
   var newTree = {};
   newTree.value = value;
 
-  // your code here
-  newTree.children = null;  // fix me
+  newTree.children = [];
+
+  Object.assign(newTree, treeMethods);
 
   return newTree;
 };
@@ -11,9 +12,16 @@ var Tree = function(value) {
 var treeMethods = {};
 
 treeMethods.addChild = function(value) {
+  this.children.push(Tree(value));
 };
 
 treeMethods.contains = function(target) {
+  for (const child of this.children) {
+    if (child.value === target) {
+      return true;
+    }
+  }
+  return false;
 };
 
 
